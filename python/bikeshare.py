@@ -17,17 +17,17 @@ def get_filters():
         (str) month - name of the month to filter by, or "all" to apply no month filter
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
-    print('Hello! Let\'s explore some US bikeshare data!')
-    
+    print('Hello! Welcome to my Bikeshare Project. Let\'s explore some US bikeshare data!')
+
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     city = ""
-    while True: 
+    while True:
         try:
             city = input("Please enter a city from the list (Chicago, New York City, Washington): ").lower()
             if city  in CITY_DATA :
                 break
         except:
-            print("Invalid Input")    
+            print("Invalid Input")
     # TO DO: get user input for month (all, january, february, ... , june)
     month= ""
     while True:
@@ -36,7 +36,7 @@ def get_filters():
             if month in MONTH_DATA:
                 break
         except:
-            print("Invalid Input")    
+            print("Invalid Input")
     # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
     day= ""
     while True:
@@ -46,7 +46,7 @@ def get_filters():
                 break
         except:
             print("Invalid Input")
-    
+
     print('-'*40)
     return city, month, day
 
@@ -118,15 +118,15 @@ def station_stats(df):
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
 
-    
+
     popular_start_station= df['Start Station'].mode()[0]
     print('Most common start station:', popular_start_station)
 
-    
+
     popular_end_station= df['End Station'].mode()[0]
     print('Most common end station: ', popular_end_station)
 
-    
+
     df['popular_combo'] = df['Start Station'] + df['End Station']
     popular_combination = df['popular_combo'].mode()[0]
     print('Most frequent combination of start station and end station trip: ', popular_combination)
@@ -141,14 +141,14 @@ def trip_duration_stats(df):
     print('\nCalculating Trip Duration...\n')
     start_time = time.time()
 
-    
+
     total_travel_time= df['Trip Duration'].sum()
-    print('Total travel time(in minutes): ', total_travel_time/60)
+    print('Total travel time(in hours): ', total_travel_time/360)
 
 
-    
+
     average_travel_time= df['Trip Duration'].mean()
-    print('Average travel time(in minutes): ', average_travel_time/60)
+    print('Average travel time(in hours): ', average_travel_time/360)
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -160,11 +160,11 @@ def user_stats(df):
     print('\nCalculating User Stats...\n')
     start_time = time.time()
 
-    
+
     user_types = df['User Type'].value_counts()
     print(user_types)
 
-    
+
     if 'Gender' in df.columns:
         gender_type = df['Gender'].value_counts()
         print(gender_type)
@@ -174,7 +174,7 @@ def user_stats(df):
     if 'Birth Year' in df.columns:
         print(df['Birth Year'].describe())
     else:
-       print('Birth Year column doesn\'t exist.') 
+       print('Birth Year column doesn\'t exist.')
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -189,12 +189,12 @@ def main():
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
-        
+
         #Gets input from the user for the raw data
         answer = input('Would you like to see the raw data?(yes, no): ')
         if answer.lower() == 'yes':
             print(df.head())
-        
+
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             break

@@ -1,11 +1,11 @@
 ### 1/8/2019
 This project and README file is created on 1/8/2019.
 
-### Project Title
-Replace the Project Title
+### Bikeshare Project
+Bikeshare project is used for this version control project
 
 ### Description
-Describe what your project is about and what it does
+Uses bikeshare project files to complete version control project
 
 ### Files used
 Include the files used

@@ -6,6 +6,7 @@ Bikeshare project is used for this version control project
 
 ### Description
 Uses bikeshare project files to complete version control project
+Bikeshare project interacts with the user and returns city based data. 
 
 ### Files used
 bikeshare.py
